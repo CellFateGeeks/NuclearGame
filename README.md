@@ -9,7 +9,7 @@ However, if NG will be used for a cell reprogramming analysis, we recommend that
 - Nuclear staining : DAPI (specifically, DNA staining)
 - Transfection reporter : RFP (Red Fluorescent Protein)
 - Final state marker : Tuj1 (neuronal marker)
-- Extra marker : GFAP (glial cells marker)
+- Extra marker : GFAP (glial cell marker)
 
 ## Input Files
 - **Epifluorescence microscopy images** : Cell culture images (currently, only CZI files are supported) containing, at least, one channel with the staining of the nuclei. 
