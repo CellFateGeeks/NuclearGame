@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/348290747.svg)](https://zenodo.org/badge/latestdoi/348290747)
+
 # NuclearGame
 NuclearGame (NG) is a Python module for segmenting cellular nuclei, measuring nuclear features, and predicting cell fate (based on these features).
 
