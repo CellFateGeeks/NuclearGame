@@ -3,7 +3,7 @@ NuclearGame (NG) is a Python module for segmenting cellular nuclei, measuring nu
 
 NG is part of the project: *Cell nucleus-based imaging analysis with machine learning to predict cell reprogramming into neurons*. For this reason, NG was developed mainly for analysing changes in the cellular nuclei throughout the process of glia-to-neuron reprogramming. 
 
-Although NG was developed for studying nuclei during reprogramming, **any cell culture image with staining of the cell nuclei can be segmented, analysed, and clustered, with this programme.**
+Although NG was developed for studying nuclei during reprogramming, **any cell culture image with staining of the nuclei can be segmented, analysed, and clustered, with this programme.**
 
 However, if NG will be used for a cell reprogramming analysis, we recommend that the cell culture images contain a protein reporter showing cell transfection and a  marker showing the final state of the reprogramming, besides the staining of the nuclei. In our case, we employed:
 - Nuclear staining : DAPI (specifically, DNA staining)
