@@ -23,3 +23,6 @@ However, if NG will be used for a cell reprogramming analysis, we recommend that
 
 ## Usage
 Examples of usage for segmentation, analysis, and clustering can be found in **/Notebooks/** as **ng_segmentation.ipynb**, **ng_analysis.ipynb**, and **ng_clustering.ipynb**, respectively.
+
+## Citation
+Gabriel Emilio Herrera-Oropeza, Marcelo J Salierno. (2021, March 22). CellFateGeeks/NuclearGame: Pre-release of NuclearGame (Version v0.1.1). Zenodo. http://doi.org/10.5281/zenodo.4626447
