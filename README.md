@@ -9,7 +9,7 @@ Although NG was developed for studying nuclei during reprogramming, **any cell c
 
 However, if NG will be used for a cell reprogramming analysis, we recommend that the cell culture images contain a protein reporter showing cell transduction and a  marker showing the final state of the reprogramming, besides the staining of the nuclei. In our case, we employed:
 - Nuclear staining : DAPI (specifically, DNA staining)
-- Transfection reporter : RFP (Red Fluorescent Protein)
+- Transduction reporter : RFP (Red Fluorescent Protein)
 - Final state marker : Tuj1 (neuronal marker)
 - Extra marker : GFAP (glial cell marker)
 
