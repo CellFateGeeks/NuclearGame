@@ -7,7 +7,7 @@ NG is part of the project: *Cell nucleus-based imaging analysis with machine lea
 
 Although NG was developed for studying nuclei during reprogramming, **any cell culture image with staining of the nuclei can be segmented, analysed, and clustered, with this programme.**
 
-However, if NG will be used for a cell reprogramming analysis, we recommend that the cell culture images contain a protein reporter showing cell transfection and a  marker showing the final state of the reprogramming, besides the staining of the nuclei. In our case, we employed:
+However, if NG will be used for a cell reprogramming analysis, we recommend that the cell culture images contain a protein reporter showing cell transduction and a  marker showing the final state of the reprogramming, besides the staining of the nuclei. In our case, we employed:
 - Nuclear staining : DAPI (specifically, DNA staining)
 - Transfection reporter : RFP (Red Fluorescent Protein)
 - Final state marker : Tuj1 (neuronal marker)
