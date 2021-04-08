@@ -14,7 +14,7 @@ However, if NG will be used for a cell reprogramming analysis, we recommend that
 - Extra marker : GFAP (glial cell marker)
 
 ## Input Files
-- **Epifluorescence microscopy images** : Cell culture images (currently, only CZI files are supported) containing, at least, one channel with the staining of the nuclei. 
+- **Epifluorescence microscopy images** : Cell culture images (currently, only CZI files are supported) containing, at least, one channel with the staining of the nuclei. Z-Stack and time-lapse files are currently not supported.
 
 ## Output Files
 - **output.json.gz** : Compressed JSON file containing all data and metadata of the images, nuclear segmentation, and raw information of the measured nuclear features.
