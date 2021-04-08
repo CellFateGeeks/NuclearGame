@@ -958,6 +958,8 @@ class NuclearGame_Segmentation(object):
                    #".tif"
                    ]
         
+        print("WARNING... In this version (v0.1.1) only CZI files are supported (Note: Z-Stack and time lapse are not currently supported)")
+        
         # Generate dictionary that will contain all the generated data
         self.data = {}
         self.data["files"] = {}
