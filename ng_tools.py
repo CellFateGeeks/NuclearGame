@@ -7,6 +7,11 @@ Created on Mon Mar 15 20:52:32 2021
 """
 
 import sys, os, subprocess, json
+import warnings
+
+warnings.filterwarnings("ignore")
+
+
 from os import listdir
 from os.path import isfile, join
 from collections import Counter
@@ -1774,7 +1779,7 @@ class NuclearGame_Analysis(object):
         return df_out
     
     
-    def find_dna_dots(self, df, box_size = 10):
+    def find_dna_dots(self, df, box_size = 10, zoom_box_size = 300):
         """
         Finds number of DNA dots
 
@@ -1784,6 +1789,9 @@ class NuclearGame_Analysis(object):
             DataFrame containing nuclear features.
         box_size : int, optional
             Side size (px) of box for finding high intensity dots. The default is 10.
+        zoom_box_size : int, optional (enter None for using whole image)
+            Side size of box (px) for accelerating the finding of the dots. The whole nucleus
+            should fit inside of the box.
 
         Returns
         -------
@@ -1791,6 +1799,8 @@ class NuclearGame_Analysis(object):
             DataFrame containing nuclear features and number of DNA dots.
 
         """
+    
+        
         lst_dna_dots = []
         
         n = 1
@@ -1804,22 +1814,24 @@ class NuclearGame_Analysis(object):
             nucleus = self.data["files"][row["source"]]['working_array'][self.data["channels_info"][self.data["dna_marker"]]].copy()
             nucleus[masks != 1] = 0
             
-            cY = int(row['y_pos'])
-            cX = int(row['x_pos'])
-            cY_low = cY - 150
-            cY_high = cY + 150
-            cX_low = cX - 150
-            cX_high = cX + 150
-            if (cY-150) < 0:
-                cY_low = 0
-            if (cY+150) > len(nucleus):
-                cY_high = len(nucleus)
-            if (cX-150) < 0:
-                cX_low = 0
-            if (cX+150) > len(nucleus[0]):
-                cX_high = len(nucleus[0])
-            nucleus = nucleus[cY_low:cY_high, cX_low:cX_high]
-            masks = masks[cY_low:cY_high, cX_low:cX_high]
+            if zoom_box_size != None:
+                half_zoom_box = zoom_box_size / 2
+                cY = int(row['y_pos'])
+                cX = int(row['x_pos'])
+                cY_low = cY - half_zoom_box
+                cY_high = cY + half_zoom_box
+                cX_low = cX - half_zoom_box
+                cX_high = cX + half_zoom_box
+                if (cY-half_zoom_box) < 0:
+                    cY_low = 0
+                if (cY+half_zoom_box) > len(nucleus):
+                    cY_high = len(nucleus)
+                if (cX-half_zoom_box) < 0:
+                    cX_low = 0
+                if (cX+half_zoom_box) > len(nucleus[0]):
+                    cX_high = len(nucleus[0])
+                nucleus = nucleus[cY_low:cY_high, cX_low:cX_high]
+                masks = masks[cY_low:cY_high, cX_low:cX_high]
                     
             ignore_mask = np.zeros(masks.shape)
             ignore_mask[masks == 0] = True
@@ -1832,6 +1844,7 @@ class NuclearGame_Analysis(object):
         
             peak_tb = find_peaks(data = nucleus, threshold = th, mask = ignore_mask, box_size = box_size)
             
+            # Remove repetitive DNA dots                                                     
             try: 
                 peak_df = peak_tb.to_pandas()
                 lst_remove = []
@@ -1868,7 +1881,7 @@ class NuclearGame_Analysis(object):
         return df
     
     
-    def spatial_entropy(self, df, d = 5):
+    def spatial_entropy(self, df, d = 5, zoom_box_size = 300):
         """
         Finds spatial entropy for each nucleus.
 
@@ -1878,6 +1891,9 @@ class NuclearGame_Analysis(object):
             DataFrame containing nuclear features.
         d : int, optional
             Side size (px) of box for finding co-occurrences. The default is 5.
+        zoom_box_size : int, optional (enter None for using whole image)
+            Side size of box (px) for accelerating the finding of the dots. The whole nucleus
+            should fit inside of the box.
 
         Returns
         -------
@@ -1898,22 +1914,24 @@ class NuclearGame_Analysis(object):
             nucleus = self.data["files"][row["source"]]['working_array'][self.data["channels_info"][self.data["dna_marker"]]].copy()
             nucleus[masks != 1] = 0
             
-            cY = int(row['y_pos'])
-            cX = int(row['x_pos'])
-            cY_low = cY - 150
-            cY_high = cY + 150
-            cX_low = cX - 150
-            cX_high = cX + 150
-            if (cY-150) < 0:
-                cY_low = 0
-            if (cY+150) > len(nucleus):
-                cY_high = len(nucleus)
-            if (cX-150) < 0:
-                cX_low = 0
-            if (cX+150) > len(nucleus[0]):
-                cX_high = len(nucleus[0])
-            nucleus = nucleus[cY_low:cY_high, cX_low:cX_high]
-            masks = masks[cY_low:cY_high, cX_low:cX_high]
+            if zoom_box_size != None:
+                half_zoom_box = zoom_box_size / 2
+                cY = int(row['y_pos'])
+                cX = int(row['x_pos'])
+                cY_low = cY - half_zoom_box
+                cY_high = cY + half_zoom_box
+                cX_low = cX - half_zoom_box
+                cX_high = cX + half_zoom_box
+                if (cY-half_zoom_box) < 0:
+                    cY_low = 0
+                if (cY+half_zoom_box) > len(nucleus):
+                    cY_high = len(nucleus)
+                if (cX-half_zoom_box) < 0:
+                    cX_low = 0
+                if (cX+half_zoom_box) > len(nucleus[0]):
+                    cX_high = len(nucleus[0])
+                nucleus = nucleus[cY_low:cY_high, cX_low:cX_high]
+                masks = masks[cY_low:cY_high, cX_low:cX_high]
             
             pp = np.array([[nx, ny] for ny in range(len(nucleus)) for nx in range(len(nucleus[ny])) if nucleus[ny][nx] != 0])
             
