@@ -1158,14 +1158,14 @@ class NuclearGame_Segmentation(object):
             if self.data["files"][file]['metadata']['XScale'] == 0.0:
                 while True:
                     try:
-                        self.data["files"][file]['metadata']['XScale'] = float(input("Enter pixel for X axis (e.g. 0.454): "))
+                        self.data["files"][file]['metadata']['XScale'] = float(input("Enter pixel size for X axis (e.g. 0.454): "))
                         break
                     except:
                         print("Invalid input! Try again...\n")
             if self.data["files"][file]['metadata']['YScale'] == 0.0:
                 while True:
                     try:
-                        self.data["files"][file]['metadata']['YScale'] = float(input("Enter pixel for Y axis (e.g. 0.454): "))
+                        self.data["files"][file]['metadata']['YScale'] = float(input("Enter pixel size for Y axis (e.g. 0.454): "))
                         break
                     except:
                         print("Invalid input! Try again...\n")
