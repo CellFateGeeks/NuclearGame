@@ -1817,7 +1817,7 @@ class NuclearGame_Analysis(object):
             nucleus[masks != 1] = 0
             
             if zoom_box_size != None:
-                half_zoom_box = zoom_box_size / 2
+                half_zoom_box = int(zoom_box_size / 2)
                 cY = int(row['y_pos'])
                 cX = int(row['x_pos'])
                 cY_low = cY - half_zoom_box
@@ -1917,7 +1917,7 @@ class NuclearGame_Analysis(object):
             nucleus[masks != 1] = 0
             
             if zoom_box_size != None:
-                half_zoom_box = zoom_box_size / 2
+                half_zoom_box = int(zoom_box_size / 2)
                 cY = int(row['y_pos'])
                 cX = int(row['x_pos'])
                 cY_low = cY - half_zoom_box
